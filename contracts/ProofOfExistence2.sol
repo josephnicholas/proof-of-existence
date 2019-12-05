@@ -26,14 +26,14 @@ contract ProofOfExistence2 {
 
   // check if the document has been notarized
   // *read-only function*
-  function checkDocument(string memory document) view public returns (bool) {
+  function checkDocument(string memory document) public view returns (bool) {
     bytes32 proof = proofFor(document);
     return hasProof(proof);
   }
 
   // returns true if proof is stored
   // *read-only function*
-  function hasProof(bytes32 proof) view internal returns (bool) {
+  function hasProof(bytes32 proof) internal view returns (bool) {
     for(uint256 counter = 0; counter < proofs.length; ++counter) {
       if(proof == proofs[counter]) {
         return true;
